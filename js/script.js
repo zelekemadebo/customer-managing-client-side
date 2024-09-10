@@ -42,7 +42,7 @@ document.getElementById("insert-customer-form").addEventListener("submit", funct
         phonenumber: formData.get("phonenumber"),
     };
 console.log(data);
-    fetch("http://localhost:2024/insert-customers-info", {
+    fetch("https://customer-managing-server-side-x0r7.onrender.com/insert-customers-info", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(data),
@@ -68,7 +68,7 @@ console.log(data);
 
 
 function fetchCustomers() {
-    fetch("http://localhost:2024/customers")
+    fetch("https://customer-managing-server-side-x0r7.onrender.com/customers")
         .then((response) => response.json())
         .then((data) => {
             const customerList = document.getElementById("customer-list");
@@ -93,7 +93,7 @@ function fetchCustomers() {
 }
 
 function fetchCustomerById(id) {
-    fetch(`http://localhost:2024/customers/${id}`)
+    fetch(`https://customer-managing-server-side-x0r7.onrender.com/customers/${id}`)
         .then((response) => response.json())
         .then((data) => {
             document.querySelector("#edit-form input[name=id]").value = data.id;
@@ -119,7 +119,7 @@ function editCustomer(e) {
     const newEmail = document.querySelector("#edit-form input[name=editEmail]").value;
     const newPhonenumber = document.querySelector("#edit-form input[name=editPhonenumber]").value;
 
-    fetch("http://localhost:2024/update", {
+    fetch("https://customer-managing-server-side-x0r7.onrender.com/update", {
         method: "PUT",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ id, newName, newAddress, newCompany,newEmail,newPhonenumber }),
@@ -137,7 +137,7 @@ function editCustomer(e) {
 
 function deleteUserById(id) {
     if (confirm("Are you sure, you want to delete this customer?")) {
-        fetch("http://localhost:2024/remove-user", {
+        fetch("https://customer-managing-server-side-x0r7.onrender.com/remove-user", {
             method: "DELETE",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({ id }),
